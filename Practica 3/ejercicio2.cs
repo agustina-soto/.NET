@@ -6,7 +6,7 @@ la misma línea en la consola.
 
 using System;
 
-void imprimirMatriz(int[,] matriz) {
+void imprimirMatriz(double[,] matriz) {
     for (int i = 0; i < matriz.GetLength(0); i++){
         for (int j = 0; j < matriz.GetLength(1); j++){
             Console.Write(matriz[i, j] + " - ");
@@ -15,10 +15,10 @@ void imprimirMatriz(int[,] matriz) {
     }
 }
 
-int [,] matriz = new int[,]
+double [,] matriz = new double[,]
 {
-    {1, 2, 3, 4},
-    {5, 6, 7, 8},
+    {1, 2.3 , 3, 4},
+    {5, 6, 7, 8.5},
     {9, 10, 11, 12}
 };
 
