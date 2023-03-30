@@ -31,7 +31,7 @@ double[] GetDiagonalSecundaria(double[,] matriz){
 bool esCuadrada(double[,] matriz) => matriz.GetLength(0) == matriz.GetLength(1);
 
 // Imprime los elementos de un vector de double
-void mostrarVector(double[] vector){
+void imprimirVector(double[] vector){
     for (int i = 0; i < vector.Length; i++){
         Console.Write(vector[i] + " | ");
     }
@@ -53,9 +53,9 @@ try{
         double[] vectorDiagonalPrincipal = GetDiagonalPrincipal(matriz);
         double[] vectorDiagonalSecundaria = GetDiagonalSecundaria(matriz);
         Console.WriteLine("Mostrando diagonal pincipal");
-        mostrarVector(vectorDiagonalPrincipal);
+        imprimirVector(vectorDiagonalPrincipal);
         Console.WriteLine("\nMostrando diagonal secundaria");
-        mostrarVector(vectorDiagonalSecundaria);
+        imprimirVector(vectorDiagonalSecundaria);
     }
     else throw new ArgumentException("La matriz no es cuadrada");
 }
