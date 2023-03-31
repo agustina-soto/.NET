@@ -11,7 +11,7 @@ otro para descifrar.
 */
 using System; using System.Collections.Generic;
 
-void cargarTabla(char[] caracteres){
+void generarTabla(char[] caracteres){
     char caracter = 'A';
     int i;
     for (i = 0; i < caracteres.Length-1; i++, caracter++){ // < (length-1) para que la ultima pos quede para cargarle el space
@@ -36,24 +36,29 @@ List<char> decifrarMensaje(string mensajeADecifrar){
     return mensaje;
 }
 
-Queue<int> cargarClaveRepetida(List<int> clave){
+Queue<int> generarClaveRepetida(List<int> clave, int cantChar){
     Queue<int> claveRepetida = new Queue<int>();
-    for (int i = 0){
-
+    int i = 0;
+    while (i < cantChar) {
+        int j = 0;
+        while ( (i < cantChar) && (j < clave.Count) ){
+            claveRepetida.Enqueue(clave[j]);
+            j++; i++;
+        }
     }
     return claveRepetida;
 }
 
 char[] abc = new char[28]; // tiene el abcdario y el space
-cargarTabla(abc);
+generarTabla(abc);
 
 string mensajeACifrar = "MENSAJE CIFRADO";
 List<char> mensajeCifrado = cifrarMensaje(mensajeACifrar);
-List<char> mensajeDecifrado = decifrarMensaje(mensajeACifrar);
-List<int> clave = new List<int>(){ 2, 3, 0, 9};
-Queue<int> claveRepetida = cargarClaveRepetida(clave);
 
-Queue<char> cola = new Queue<char>();
+List<int> clave = new List<int>(){ 2, 3, 0, 9};
+Queue<int> claveRepetida = generarClaveRepetida(clave, mensajeACifrar.Length);
+
+List<char> mensajeDecifrado = decifrarMensaje(mensajeACifrar);
 
 
 Console.ReadLine();
