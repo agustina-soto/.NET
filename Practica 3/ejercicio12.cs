@@ -20,6 +20,7 @@ void generarTabla(char[] caracteres){
     caracteres[i] = ' ';
 }
 
+// chequear que esto compile, lo modifique en el tren!!!
 List<char> cifrarMensaje(string mensajeACifrar, Queue<int> claveRepetida){
     List<char> mensaje = new List<char>();
     for (int i = 0; i < mensajeACifrar.Length; i++){
