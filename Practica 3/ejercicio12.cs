@@ -27,7 +27,7 @@ List<char> cifrarMensaje(string mensajeACifrar, Queue<int> claveRepetida){
         mensaje.Insert(i, mensajeACifrar[i] +  claveRepetida.Peek(i) ); // //mensaje[i] = mensajeACifrar[i]; ES LO MISMO?
     }
     return mensaje;
-}
+} // chequear lo de peek en teoría, no sé si se usaba asi
 
 List<char> decifrarMensaje(string mensajeADecifrar){
     List<char> mensaje = new List<char>();
