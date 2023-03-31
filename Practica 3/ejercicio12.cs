@@ -20,10 +20,10 @@ void generarTabla(char[] caracteres){
     caracteres[i] = ' ';
 }
 
-List<char> cifrarMensaje(string mensajeACifrar){
+List<char> cifrarMensaje(string mensajeACifrar, Queue<int> claveRepetida){
     List<char> mensaje = new List<char>();
     for (int i = 0; i < mensajeACifrar.Length; i++){
-        mensaje.Insert(i, mensajeACifrar[i]); // //mensaje[i] = mensajeACifrar[i]; ES LO MISMO?
+        mensaje.Insert(i, mensajeACifrar[i] +  claveRepetida.Peek(i) ); // //mensaje[i] = mensajeACifrar[i]; ES LO MISMO?
     }
     return mensaje;
 }
