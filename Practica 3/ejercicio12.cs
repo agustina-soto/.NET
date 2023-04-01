@@ -1,65 +1,76 @@
-/*
-12. Utilizar la clase Queue<T> para implementar un programa que realice el cifrado de un texto
-aplicando la técnica de clave repetitiva. La técnica de clave repetitiva consiste en desplazar un
-carácter una cantidad constante de acuerdo a la lista de valores que se encuentra en la clave.
+using System; using System.Text;
 
-A cada carácter del mensaje original se le suma la cantidad indicada en la clave. En el caso que
-la suma fuese mayor que 28 se debe volver a contar desde el principio, Implementar una cola
-con los números de la clave encolados y a medida que se desencolen para utilizarlos en el
-cifrado, se vuelvan a encolar para su posterior utilización. Programar un método para cifrar y
-otro para descifrar.
-*/
-using System; using System.Collections.Generic;
-
-void generarTabla(char[] caracteres){
+/* Genera una tabla de caracteres con el abecedario y el space*/
+char[] generarTabla(){
     char caracter = 'A';
+    char[] tabla = new char[27];
     int i;
-    for (i = 0; i < caracteres.Length-1; i++, caracter++){ // < (length-1) para que la ultima pos quede para cargarle el space
-        caracteres[i] = caracter;
+    for (i = 0; i < tabla.Length-1; i++, caracter++){ // < (length-1) para que la ultima pos quede para cargarle el space
+        tabla[i] = caracter;
     }
-    caracteres[i] = ' ';
+    tabla[i] = ' ';
+
+    return tabla;
 }
 
-// chequear que esto compile, lo modifique en el tren!!!
-List<char> cifrarMensaje(string mensajeACifrar, Queue<int> claveRepetida){
-    List<char> mensaje = new List<char>();
-    for (int i = 0; i < mensajeACifrar.Length; i++){
-        mensaje.Insert(i, mensajeACifrar[i] +  claveRepetida.Peek(i) ); // //mensaje[i] = mensajeACifrar[i]; ES LO MISMO?
+/* Devuelve una cola de enteros cargada con una clave recibida por parametro */
+Queue<int> generarClaveRepetida(List<int> clave){
+    Queue<int> cola = new Queue<int>();
+    for (int i = 0; i < clave.Count; i++){
+        cola.Enqueue(clave[i]);
     }
-    return mensaje;
-} // chequear lo de peek en teoría, no sé si se usaba asi
-
-List<char> decifrarMensaje(string mensajeADecifrar){
-    List<char> mensaje = new List<char>();
-    for (int i = 0; i < mensajeADecifrar.Length; i++){
-        mensaje.Insert(i, mensajeADecifrar[i]);
-    }
-    return mensaje;
+    return cola;
 }
 
-Queue<int> generarClaveRepetida(List<int> clave, int cantChar){
-    Queue<int> claveRepetida = new Queue<int>();
-    int i = 0;
-    while (i < cantChar) {
-        int j = 0;
-        while ( (i < cantChar) && (j < clave.Count) ){
-            claveRepetida.Enqueue(clave[j]);
-            j++; i++;
+/* Devuelve la posicion donde de encuentra c o -1 si no lo encuentra */
+int buscarPos(char[] tabla, char c){
+    int pos = 0;
+    for (int i = 0; i < tabla.Length; i++){
+        if (tabla[i] == c){
+            pos = i;
+            break;
         }
     }
-    return claveRepetida;
+    return pos;
 }
 
-char[] abc = new char[28]; // tiene el abcdario y el space
-generarTabla(abc);
+/* Devuelve cifrado un mensaje recibido por parametro */
+StringBuilder cifrarMensaje(char[] tabla, Queue<int> clave, string msj){
+    StringBuilder sb = new StringBuilder();
+    int codigo, pos, elem, aux;
+    for (int i = 0; i < msj.Length; i++){ // hasta cant caracteres del mensaje
+        pos = buscarPos(tabla, msj[i]); // Busca la pos donde se encuentra el caracter actual
+        elem = clave.Dequeue(); // Saca elem de la cola
+        clave.Enqueue(elem); // Vuelve a encolar elem
+        aux = pos + elem; // codigo sin cifrar + clave repetida = codigo cifrado
+        codigo = (aux < 27) ? aux : (aux - 27); // si la suma de arriba > 27, restarle 27
+        sb.Insert(i, tabla[codigo]);
+    }
+    return sb; // Queda cargado un string de char modificable
+}
 
-string mensajeACifrar = "MENSAJE CIFRADO";
-List<char> mensajeCifrado = cifrarMensaje(mensajeACifrar);
 
-List<int> clave = new List<int>(){ 2, 3, 0, 9};
-Queue<int> claveRepetida = generarClaveRepetida(clave, mensajeACifrar.Length);
+/* Devuelve decifrado un mensaje cifrado recibido por parametro */
+StringBuilder descifrarMensaje(char[] tabla, Queue<int> clave, StringBuilder msjCifrado){
+    int codigo, pos, elem, aux;
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < msjCifrado.Length; i++){
+        pos = buscarPos(tabla, msjCifrado[i]); // Busca la pos donde se encuentra el caracter actual
+        elem = clave.Dequeue(); // Saca elem de la cola
+        clave.Enqueue(elem); // Vuelve a encolar elem
+        aux = pos - elem; // codigo cifrado - clave repetida = codigo descifrado
+        
+        codigo = (aux > 0) ? aux : (aux + 27); // si la resta de arriba < 27, sumarle 27
+        //mepa que lo de arriba no va a funcionar como yo quiero jjssjjs :(
 
-List<char> mensajeDecifrado = decifrarMensaje(mensajeACifrar);
+        sb.Insert(i, tabla[codigo]);
+    }
+    return sb;
+}
 
-
-Console.ReadLine();
+string mensaje = "HOLA MUNDO";
+List<int> clave = new List<int>() {1, 2, 3, 4};
+char[] tabla = generarTabla();
+Queue<int> cola = generarClaveRepetida(clave);
+StringBuilder mensajeCifrado = cifrarMensaje(tabla, cola, mensaje);
+StringBuilder mensajeDescifrado = descifrarMensaje(tabla, cola, mensajeCifrado);
