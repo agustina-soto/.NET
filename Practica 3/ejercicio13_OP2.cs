@@ -13,14 +13,14 @@ bool estaBalanceada(string exp, Stack<char> pila){
     bool ok = true;
     for (int i = 0; i < exp.Length; i++)
     {
-        if (exp[i] == '(')
+        if (exp[i] == '(') // Si encontro un parentesis de apertura
         {
-            pila.Push(exp[i]);
+            pila.Push(exp[i]); // Pushear en la pila
         }
-        else if (exp[i] == ')')
+        else if (exp[i] == ')') // Si encontro un parentesis de cierre
         {
             if (pila.Count > 0){
-                pila.Pop();
+                pila.Pop(); // Popear de la pila
             }
             else{
                 ok = false;
@@ -31,22 +31,14 @@ bool estaBalanceada(string exp, Stack<char> pila){
 }
 
 
-string exp = "((())";
+string exp = "(((()))";
 Stack<char> pila = new Stack<char>();
 
-if (estaBalanceada(exp, pila))
-{
-    Console.WriteLine("La expresion aritmetica esta balanceada");
-    if (pila.Count == 0)
+if ( (estaBalanceada(exp, pila)) && (pila.Count == 0) )
     {
-        Console.WriteLine("La cadena es valida");
+        Console.Write("La expresion aritmetica esta balanceada");
     }
-    else
+else
     {
         Console.WriteLine("La cadena no es valida");
     }
-}
-else
-{
-    Console.WriteLine("La expresion aritmetica no esta balanceada");
-}
