@@ -1,9 +1,14 @@
+/*
+ME IMPRIME "HOLAAMUNDO" :(
+*/
+
+
 using System; using System.Text;
 
 /* Genera una tabla de caracteres con el abecedario y el space*/
 char[] generarTabla(){
     char caracter = 'A';
-    char[] tabla = new char[27];
+    char[] tabla = new char[28];
     int i;
     
     for (i = 0; i < tabla.Length-1; i++, caracter++)
@@ -26,7 +31,7 @@ Queue<int> generarClaveRepetida(List<int> clave){
     return cola;
 }
 
-/* Devuelve la posicion donde de encuentra c o -1 si no lo encuentra */
+/* Devuelve la posicion donde de encuentra c */
 int buscarPos(char[] tabla, char c){
     int pos = 0;
     
@@ -43,7 +48,7 @@ int buscarPos(char[] tabla, char c){
 /* Devuelve cifrado un mensaje recibido por parametro */
 StringBuilder cifrarMensaje(char[] tabla, Queue<int> clave, string msj){
     StringBuilder sb = new StringBuilder();
-    int codigo, pos, elem, aux;
+    int pos, elem;
     
     for (int i = 0; i < msj.Length; i++)
     {
@@ -52,11 +57,11 @@ StringBuilder cifrarMensaje(char[] tabla, Queue<int> clave, string msj){
         elem = clave.Dequeue(); // Saca elem de la cola
         clave.Enqueue(elem); // Vuelve a encolar elem
         
-        aux = pos + elem; // codigo sin cifrar + clave repetida = codigo cifrado
+        elem += pos;
         
-        codigo = (aux < 27) ? aux : (aux - 27); // si la suma de arriba > 27, restarle 27
+        if (elem > 28) elem -= 28;
         
-        sb.Insert(i, tabla[codigo]);
+        sb.Append(tabla[elem]);
     }
     return sb; // Queda cargado un string de char modificable
 }
@@ -64,7 +69,7 @@ StringBuilder cifrarMensaje(char[] tabla, Queue<int> clave, string msj){
 
 /* Devuelve decifrado un mensaje cifrado recibido por parametro */
 StringBuilder descifrarMensaje(char[] tabla, Queue<int> clave, StringBuilder msjCifrado){
-    int codigo, pos, elem, aux;
+    int pos, elem;
     StringBuilder sb = new StringBuilder();
     
     for (int i = 0; i < msjCifrado.Length; i++)
@@ -74,11 +79,11 @@ StringBuilder descifrarMensaje(char[] tabla, Queue<int> clave, StringBuilder msj
         elem = clave.Dequeue(); // Saca elem de la cola
         clave.Enqueue(elem); // Vuelve a encolar elem
         
-        aux = pos - elem; // codigo cifrado - clave repetida = codigo descifrado
+        pos -= elem;
         
-        codigo = (aux > 0) ? aux : (aux + 27); // si la resta de arriba < 27, sumarle 27
+        if (pos < 0) pos += 28;
 
-        sb.Insert(i, tabla[codigo]);
+        sb.Append(tabla[pos]);
     }
     return sb;
 }
@@ -87,5 +92,8 @@ string mensaje = "HOLA MUNDO";
 List<int> clave = new List<int>() {1, 2, 3, 4};
 char[] tabla = generarTabla();
 Queue<int> cola = generarClaveRepetida(clave);
-StringBuilder mensajeCifrado = cifrarMensaje(tabla, cola, mensaje);
-StringBuilder mensajeDescifrado = descifrarMensaje(tabla, cola, mensajeCifrado);
+
+StringBuilder mensajeCifrado = cifrarMensaje(tabla, generarClaveRepetida(clave), mensaje);
+Console.WriteLine($"Mensaje cifrado: {mensajeCifrado}");
+StringBuilder mensajeDescifrado = descifrarMensaje(tabla, generarClaveRepetida(clave), mensajeCifrado);
+Console.WriteLine($"Mensaje descifrado: {mensajeDescifrado}");
