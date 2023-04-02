@@ -20,12 +20,10 @@ double[][] GetArregloDeArreglo(double [,] matriz){
     return arreglo;
 }
 
-// Declara, crea y carga una matriz de double
-double[,] matriz = new double[,]
-{
-    {1, 2, 3, 4},
-    {5, 6, 7, 8}
-};
+double[,] matriz = new double[,] {
+                                    {1, 2, 3, 4},
+                                    {5, 6, 7, 8}
+                                 };
 
 double[][] arreglo = GetArregloDeArreglo(matriz);
 
