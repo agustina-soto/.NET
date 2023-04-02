@@ -38,14 +38,13 @@ void imprimirVector(double[] vector){
 }
 
 // Declara, crea y carga una matriz de double
-double [,] matriz = new double [,]
-{
-                                    // {0.0, 0.1, 0.2, 0.3}, // Para chequear si maneja bien la excepcion
-                                    {1.1, 2.2, 3.3, 4.4},
-                                    {5.5, 6.6, 7.7, 8.8},
-                                    {9.9, 10.0, 11.1, 12.2},
-                                    {13.3, 14.4, 15.5, 16.6},
-};
+double [,] matriz = new double [,] {
+                                        // {0.0, 0.1, 0.2, 0.3}, // Para chequear si maneja bien la excepcion
+                                        {1.1, 2.2, 3.3, 4.4},
+                                        {5.5, 6.6, 7.7, 8.8},
+                                        {9.9, 10.0, 11.1, 12.2},
+                                        {13.3, 14.4, 15.5, 16.6},
+                                   };
 
 
 try{
