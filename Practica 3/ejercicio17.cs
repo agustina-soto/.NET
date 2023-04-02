@@ -11,7 +11,7 @@ float calculadora(string op, float num1, float num2){
     switch (op)
     {
         case "+": res = num1 + num2;
-                              break; // Es necesario ponerle break a todos los case?? o cada vez que entra a uno ya no entra al resto?
+                              break; // Es necesario ponerle break a todos los case?? o cada vez que entra a uno ya no evalua el resto?
         case "-": res = num1 - num2;
                               break;
         case "*": res = num1 * num2;
