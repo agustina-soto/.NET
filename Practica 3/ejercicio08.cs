@@ -22,12 +22,9 @@ var c = new { Nombre = "Juan" };
 var d = new { Nombre = "María" };
 var e = new { Nombre = "Maria", Edad = 20 };
 var f = new { Edad = 20, Nombre = "Maria" };
-f.Edad = 22; // No se puede asignar porque es de solo lectura
-d = c; // Permitido porque ?????????????????
-        // ?????????????????
-        // ?????????????????
-        // ?????????????????
+f.Edad = 22; // No se puede asignar porque es de solo lectura, solo se podria modificar la edad usando otro tipo anonimo inicializado con esa nueva edad
+d = c; // Permitido porque la referencia sí la podés cambiar si son del mismo tipo
 
-e = d; // No se puede convertir implícitamente el tipo '<anonymous type: string Nombre>' en '<anonymous type: string Nombre, int Edad>'
+e = d; // No se puede asignar d a e porque no son del mismo tipo (e tiene nombre y edad, d solo tiene nombre)
 
-f = e; // No se puede convertir implícitamente el tipo '<anonymous type: string Nombre, int Edad>' en '<anonymous type: int Edad, string Nombre>'
+f = e; // No se puede asignar e a f porque no son del mismo tipo (f tiene edad y nombre y e tiene nombre y edad)
