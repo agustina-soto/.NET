@@ -16,8 +16,8 @@ Ejemplo de listado por consola:
 using System;
 using ejercicio1;
 
-Console.SetIn(new System.IO.StreamReader("personas.txt")); // Redirecciona la entrada estandar de la consola con la entrada del archivo de texto
-
+String archivo_de_texto = @"C:\Users\agust\proyectosDotnet\tp4\personas.txt";
+Console.SetIn(new System.IO.StreamReader(archivo_de_texto)); // Redirecciona la entrada estandar de la consola con la entrada del archivo de texto
 
 String linea;
 try
