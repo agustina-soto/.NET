@@ -2,43 +2,43 @@ namespace ejercicio2;
 
 class Persona
 {
-    private String nombre;
-    private int edad;
-    private String DNI;
+    private String _nombre;
+    private int _edad;
+    private String _DNI;
 
     public Persona(){
 
     }
 
     public Persona(String nombre, int edad, String DNI){
-        this.nombre = nombre;
-        this.edad = edad;
-        this.DNI = DNI;
+        this._nombre = nombre;
+        this._edad = edad;
+        this._DNI = DNI;
     }
 
     public void setNombre(String nombre){
-        this.nombre = nombre;
+        this._nombre = nombre;
     }
 
     public void setEdad(int edad){
-        this.edad = edad;
+        this._edad = edad;
     }
     public void setDNI(String DNI){
-        this.DNI = DNI;
+        this._DNI = DNI;
     }
     public String getNombre(){
-        return this.nombre;
+        return this._nombre;
     }
 
     public int getEdad(){
-        return this.edad;
+        return this._edad;
     }
     public String getDNI(){
-        return this.DNI;
+        return this._DNI;
     }
 
     public String Imprimir(){
-        String st = $"{nombre}\t{edad}\t{DNI}";
+        String st = $"{_nombre}\t{_edad}\t{_DNI}";
         return st;
     }
 }
