@@ -9,7 +9,6 @@ public class Auto{
         _marca = marca;
         _modelo = modelo;
     }
-        public string ObtenerDescripcion() => $"Auto {_marca} {_modelo}";
 
     public Auto()
     {
@@ -22,7 +21,6 @@ public class Auto{
     {
     }
 
-    public string GetDescripcion(){
-        return $"Auto {_marca} {_modelo}";
-    }
+    public string GetDescripcion() => $"Auto {_marca} {_modelo}";
+
 }
