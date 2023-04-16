@@ -8,7 +8,7 @@ public class Circulo
         _radio = radio;
     }
 
-    public double GetArea(){ // AREA DEUN CIRCULO => radio^2 * PI
-        return Math.Pow(_radio, 2)*Math.PI;
-    }
+    // AREA DEUN CIRCULO => radio^2 * PI
+    public double GetArea() => Math.Pow(_radio, 2)*Math.PI;
+
 }
