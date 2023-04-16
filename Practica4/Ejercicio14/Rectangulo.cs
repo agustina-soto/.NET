@@ -10,7 +10,7 @@ public class Rectangulo
         _altura = altura;
     }
 
-    public double GetArea(){ // AREA DE UN RECTANGULO => base * altura
-        return _base*_altura;
-    }
+    // AREA DE UN RECTANGULO => base * altura
+    public double GetArea() => _base*_altura;
+
 }
