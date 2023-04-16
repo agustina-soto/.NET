@@ -3,35 +3,41 @@ namespace ejercicio12;
 class Cuenta
 {
 
-    private String _titular;
-    private int _numero;
-    private int _monto = 0; // Esta mal hacerlo aca y no en los constructores? calculo q tendria q hacerlo en todos...
+    private string? _titularNombre;
+    private int _titularDNI;
+    private double _monto;
 
     public Cuenta(){
-
+        _monto = 0;
+        _titularNombre = "No especificado";
+        _titularDNI = -1;
     }
 
-    public Cuenta(String titular, int numero){
-        _titular = titular;
-        _numero = numero;
+    public Cuenta(int titularDNI) :this()
+    {
+        _titularDNI = titularDNI;
     }
 
-    public Cuenta(int numero){
-        _numero = numero;
+    public Cuenta(String titularNombre) :this()
+    {
+        _titularNombre = titularNombre;
     }
 
-    public Cuenta(String titular){
-        _titular = titular;
+    public Cuenta(String titularNombre, int titularDNI) :this() {
+        _titularNombre = titularNombre;
+        _titularDNI = titularDNI;
     }
 
-    public void Imprimir() => Console.WriteLine($"NUMERO DE LA CUENTA: {_numero} | TITULAR: {_titular} | MONTO DISPONIBLE: {_monto}");
+    public void Imprimir(){
+        Console.WriteLine($"Nombre: {_titularNombre}, DNI: {((_titularDNI == -1) ? "No especificado" : _titularDNI)}, Monto: {_monto}");
+    }
 
-    public void Depositar(int monto) => _monto += monto;
-    public void Extraer(int monto){
+    public void Depositar(double monto) => _monto += monto;
+    public void Extraer(double monto){
         try
         {
             if (_monto > monto) _monto -= monto;
-            else throw new Exception("Dinero insuficiente. No se puede extraer esa cantidad");  
+            else throw new Exception("Operacion cancelada, monto insuficiente");  
         }
         catch (Exception e)
         {
