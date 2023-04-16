@@ -4,8 +4,8 @@ class Hora
 {
     private int _horas;
     private int _minutos;
-    private int _segundos = -1;
-    private double _segundosD = -1;
+    private int _segundos;
+    private double _segundosD;
 
     public Hora(int horas, int minutos, int segundos) {
         _horas = horas;
@@ -13,19 +13,21 @@ class Hora
         _segundos = segundos;
     }
 
-    public Hora(double hora) {
+    public Hora(double hora) { // Si saco la variable auxiliar me calcula mal los datos de las variables...
         _horas = (int)hora; // Trunca a entero
         double aux = (hora - _horas)*60;
         _minutos = (int)aux;
         _segundosD = (aux - _minutos)*60;
+        _segundos = -1;
     }
 
     public void revisarSegundos() {
-        if (_segundosD > 59.999) { // Si tengo que agregarle tiempo a  _minutos
-            _segundosD = 0; // Si es mayor a 59.999 se considera 1 seg más
-            _minutos += 1; // no puedo tener mas de un minuto para agregarle no??
+        if (Math.Round(_segundosD) == 60) { // Si es mayor a 59.999 (redondeado: 60) se considera 1 min
+            _segundosD = 0;
+            _minutos += 1;
         }
     }
+
 
     public void revisarMinutos() {
             if (_minutos > 59) {
@@ -41,14 +43,8 @@ class Hora
         else {
             revisarSegundos();
             revisarMinutos();
-            Console.WriteLine( $"{_horas} horas, {_minutos} minutos y {_segundosD:0.000} segundos" ); // _segundosD:0.000 => imprime 3 digitos decimales
+            Console.WriteLine( $"{_horas} horas, {_minutos} minutos y {_segundosD:0.000} segundos" ); // _segundosD:0.000 => Imprime 3 digitos decimales
         }
         Console.WriteLine("\n");
     }
 }
-
-/*  PARA QUE ME DIJO JUANI Q HAGA ESTO?? --> PREGUNTARLE
-    public Hora(double segundos){
-        _segundosD = segundos;
-    }
-*/
