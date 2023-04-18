@@ -23,7 +23,7 @@ if (st4 == null)
 }
 */
 
-string? st="", st1="", st2="", st3="", st4="";
+string? st="", st1="", st2="", st3="", st4=""; // Si no las inicializo me tira error... por que??
 
 st = st1 ?? (st2 ?? st3); // st = st1 si es != null, sino es st2 si != null, sino es st3
 
