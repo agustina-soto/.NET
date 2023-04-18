@@ -13,7 +13,7 @@ class Hora
         _segundos = segundos;
     }
 
-    public Hora(double hora) { // Si saco la variable auxiliar me calcula mal los datos de las variables...
+    public Hora(double hora) {
         _horas = (int)hora; // Trunca a entero
         _minutos = (int) ((hora-_horas)*60);
         _segundosD = ((hora-_horas)*60 - _minutos)*60;
