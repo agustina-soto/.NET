@@ -28,9 +28,7 @@ class Cuenta
         _titularDNI = titularDNI;
     }
 
-    public void Imprimir(){
-        Console.WriteLine($"Nombre: {_titularNombre}, DNI: {((_titularDNI == -1) ? "No especificado" : _titularDNI)}, Monto: {_monto}");
-    }
+    public void Imprimir() => Console.WriteLine($"Nombre: {_titularNombre}, DNI: {((_titularDNI == -1) ? "No especificado" : _titularDNI)}, Monto: {_monto}");
 
     public void Depositar(double monto) => _monto += monto;
     public void Extraer(double monto){
@@ -45,6 +43,5 @@ class Cuenta
             Console.WriteLine(e.Message);
         }
     }
-
 
 }
