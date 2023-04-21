@@ -10,6 +10,6 @@ class A {
 
 /*
     La declaracion de la clase A es incorrecta. Un constructor estatico no puede tener parametros.
-    Además, el constructor de instancia no tiene un modificador de acceso declarado, por lo que se le asignará "private";
-    con lo cual no se podrán instanciar objetos de la clase A fuera de la misma.
+    ADVERTENCIA: El constructor de instancia no tiene un modificador de acceso declarado, por lo
+    que se le asignará "private"; con lo cual no se podrán instanciar objetos de la clase A fuera de la misma.
 */
