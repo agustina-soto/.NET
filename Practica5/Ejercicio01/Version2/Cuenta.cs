@@ -16,8 +16,7 @@ class Cuenta{
     private static StringBuilder? Detalle = new StringBuilder(); // Detalle y movimientos de la cuenta
 
     public Cuenta(){
-        this.Id++;
-        Cuenta.CuentasCreadas++;
+        this.Id = ++Cuenta.CuentasCreadas;
         Imprimir($"Se creo la cuenta Id = {Cuenta.CuentasCreadas}");
     }
 
@@ -25,7 +24,7 @@ class Cuenta{
         this.Saldo += monto;
         Cuenta.CantDepositos++;
         Cuenta.MontoDepositado += monto;
-        Imprimir($"Se deposito {monto} en la cuenta {Cuenta.CuentasCreadas} (Saldo = {this.Saldo})");
+        Imprimir($"Se deposito {monto} en la cuenta {this.Id} (Saldo = {this.Saldo})");
         return this;
     }
     
@@ -35,7 +34,7 @@ class Cuenta{
             this.Saldo -= monto;
             Cuenta.CantExtracciones++;
             Cuenta.MontoExtraido += monto;
-            Imprimir($"Se extrajo {monto} de la cuenta {Cuenta.CuentasCreadas} (Saldo = {this.Saldo})");
+            Imprimir($"Se extrajo {monto} de la cuenta {this.Id} (Saldo = {this.Saldo})");
         }
         else
         {
