@@ -13,16 +13,15 @@ class Cuenta{
     private static int ExtraccionesInvalidas = 0; // Total extracciones invalidas (falta de fondos)
 
     public Cuenta(){
-        Cuenta.CuentasCreadas++;
-        this.Id = Cuenta.CuentasCreadas; // osea this.Id = ++Cuenta.CuentasCreadas ??
-        Console.WriteLine($"Se creo la cuenta Id = {Cuenta.CuentasCreadas}");
+        this.Id = ++Cuenta.CuentasCreadas;
+        Console.WriteLine($"Se creo la cuenta Id = {this.Id}");
     }
 
     public Cuenta Depositar(double monto){
         this.Saldo += monto;
         Cuenta.CantDepositos++;
         Cuenta.MontoDepositado += monto;
-        Console.WriteLine($"Se deposito {monto} en la cuenta {Cuenta.CuentasCreadas} (Saldo = {this.Saldo})");
+        Console.WriteLine($"Se deposito {monto} en la cuenta {this.Id} (Saldo = {this.Saldo})");
         return this;
     }
 
@@ -32,12 +31,12 @@ class Cuenta{
             this.Saldo -= monto;
             Cuenta.CantExtracciones++;
             Cuenta.MontoExtraido += monto;
-            Console.WriteLine($"Se extrajo {monto} de la cuenta {Cuenta.CuentasCreadas} (Saldo = {this.Saldo})");
+            Console.WriteLine($"Se extrajo {monto} de la cuenta {this.Id} (Saldo = {this.Saldo})");
         }
         else
         {
             Cuenta.ExtraccionesInvalidas++;
-            Console.WriteLine($"Operación denegada - Saldo insuficiente --> {monto} > {this.Saldo}");
+            Console.WriteLine($"Operación denegada - Saldo insuficiente");
         }
         return this;
     }
