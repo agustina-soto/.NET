@@ -70,7 +70,7 @@ class Cuenta{
         foreach (Cuenta c in Cuenta.ListaCuentas){
             lista.Add(c);
         }
-        return Cuenta.ListaCuentas;
+        return lista; // habia puesto Cuenta.s_ListaCuentas )?
     }
     */
 }
