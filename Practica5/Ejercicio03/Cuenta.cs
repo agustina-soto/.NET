@@ -61,6 +61,6 @@ class Cuenta{
         Console.WriteLine($"Se denegaron {Cuenta.s_ExtraccionesInvalidas} extracciones por falta de fondos");
     }
 
-    public static List<Cuenta> GetCuentas() => Cuenta.s_ListaCuentas; // ESTO PEDIA LA CONSIGNA? NO ENTIENDO SINO...
+    public static List<Cuenta> GetCuentas => Cuenta.s_ListaCuentas;
 
 }
