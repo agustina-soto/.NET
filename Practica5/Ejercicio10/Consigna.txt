@@ -1,0 +1,5 @@
+Identificar todos los miembros en la siguiente declaración de clase. Indicar si se trata de un
+constructor, método, campo, propiedad o indizador, si es estático o de instancia, y en caso que
+corresponda si es de sólo lectura, sólo escritura o lectura y escritura. En el caso de las propiedades
+indicar también si se trata de una propiedad auto-implementada.
+Nota: La clase compila perfectamente. Sólo prestar atención a la sintaxis, la semántica es irrelevante.
