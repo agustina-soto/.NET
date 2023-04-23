@@ -35,6 +35,7 @@ class Cuenta{
         return this;
     }
 
+
     public Cuenta Extraer(double monto){
         if (this.Saldo >= monto)
         {
@@ -61,16 +62,14 @@ class Cuenta{
         Console.WriteLine($"Se denegaron {Cuenta.ExtraccionesInvalidas} extracciones por falta de fondos");
     }
 
-    public static List<Cuenta> GetCuentas() => Cuenta.ListaCuentas;
 
-
-    /*
-    public static List<Cuenta> GetCuentas(){
-        List<Cuenta> lista = new List<Cuenta>();
-        foreach (Cuenta c in Cuenta.ListaCuentas){
-            lista.Add(c);
+    public static List<Cuenta> GetCuentas {
+        get {
+            List<Cuenta> lista = new List<Cuenta>();
+            foreach (Cuenta c in Cuenta.ListaCuentas){
+                lista.Add(c);
+            }
+            return lista;
         }
-        return lista; // habia puesto Cuenta.s_ListaCuentas )?
     }
-    */
 }
