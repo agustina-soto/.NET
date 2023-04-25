@@ -10,7 +10,6 @@ class Auto
 {
     public static string Marca { get; private set; } = "Ford";
     public Auto(string marca) => Marca = marca;
-    public Auto() { }
 }
 
 class Taxi : Auto
