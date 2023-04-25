@@ -12,7 +12,7 @@ class A
 
 class B : A
 {
-    public B(int id) : base(id) => base._id = id;
+    public B(int id) : base(id) {}
 
     public override void Imprimir()
     {
@@ -25,7 +25,7 @@ class B : A
 
 class C : B
 {
-    public C(int id) : base(id) => base._id = id;
+    public C(int id) : base(id) {}
 
     public override void Imprimir()
     {
@@ -38,7 +38,7 @@ class C : B
 
 class D : C
 {
-    public D(int id) : base(id) => base._id = id;
+    public D(int id) : base(id) {}
     
     public override void Imprimir()
     {
