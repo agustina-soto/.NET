@@ -10,5 +10,5 @@ public override string M1()
 }
 
 /*
-  El error esta en que el metodo abstracto M1 declara un cuerpo. Por definicionlos metodos abstractos no tienen implementacion
+  El error esta en que el metodo abstracto M1 declara un cuerpo. Por definicion los metodos abstractos no tienen implementacion
 */
