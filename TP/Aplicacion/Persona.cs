@@ -2,7 +2,7 @@ namespace aplicacion;
 
 abstract class Persona {
 
-    public int Id { get; }
+    public int Id { get; protected set; } // MAITE: aca le puse protected al set asi tercero y titular lo pueden setear
     public string DNI { get; set; }
     public string Apellido { get; set; }
     public string Nombre { get; set; }
@@ -14,5 +14,7 @@ abstract class Persona {
         Nombre = nombre;
         Telefono = telefono;
     }
+
+    public override string ToString() => this.DNI + " " + this.Apellido + ", " + this.Nombre; // El telefono hay q imprimirlo manual en la clase derivada :)
 
 }
