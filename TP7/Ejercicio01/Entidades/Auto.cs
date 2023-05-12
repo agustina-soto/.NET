@@ -1,4 +1,4 @@
-namespace ejercicio01;
+namespace tp7;
 
 class Auto : IVendible, ILavable, IReciblable, IImportante, IComercial {
 
