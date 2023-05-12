@@ -1,0 +1,4 @@
+Incorporar al ejercicio anterior la posibilidad también de lavar a los perros. También se debe
+incorporar una clase derivada de Película, las “películas clásicas” que además de alquilarse pueden
+venderse. Estos cambios deben poder realizarse sin necesidad de modificar la clase estática
+Procesador.
