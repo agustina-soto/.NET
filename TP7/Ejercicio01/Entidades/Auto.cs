@@ -1,6 +1,6 @@
 namespace ejercicio01;
 
-class Auto : IVendible, ILavable, IReciblable {
+class Auto : IVendible, ILavable, IReciblable, IImportante, IComercial {
 
     public Auto(){
         
@@ -13,5 +13,8 @@ class Auto : IVendible, ILavable, IReciblable {
     public void Secando() => Console.WriteLine("Secando auto");
 
     public void Reciclando() => Console.WriteLine("Reciclando auto");
+
+
+    public void Importar() => Console.WriteLine("Método Importar() de la clase Auto");
 
 }
