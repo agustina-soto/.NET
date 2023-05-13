@@ -6,7 +6,7 @@ Pelicula pelicula = new Pelicula();
 
 Procesador.Alquilar(pelicula, persona);
 Procesador.Alquilar(libro, persona);
-
+ 
 Procesador.Atender(persona);
 Procesador.Atender(perro);
 
