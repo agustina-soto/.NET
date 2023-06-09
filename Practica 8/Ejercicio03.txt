@@ -1,0 +1,15 @@
+Teniendo en cuenta lo respondido en el ejercicio anterior, ¿Qué salida produce en la consola la
+ejecución del siguiente programa?se 
+
+Action[] acciones = new Action[10];
+for (int i = 0; i < 10; i++)
+{
+  acciones[i] = () => Console.WriteLine(i + " ");
+}
+foreach (var a in acciones)
+{
+  a.Invoke();
+}
+
+- El programa imprime 10 veces 10 porque al momento de la invocación la variable i del for quedó con valor 10 debido a que
+se toma la referencia y NO una copia de la misma.
