@@ -1,6 +1,6 @@
 namespace tp7;
 
-class PeliculaClasica : Pelicula , IAlquilable, IVendible {
+class PeliculaClasica : Pelicula, IVendible {
 
     public PeliculaClasica() : base() { }
 
