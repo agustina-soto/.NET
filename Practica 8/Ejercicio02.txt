@@ -1,0 +1,4 @@
+2) ¿Qué obtiene un método anónimo (o expresión lambda) cuando accede a una variable definida en
+el entorno que lo rodea, una copia del valor de la variable o la referencia a dicha variable?
+
+Obtiene la referencia de dicha variable.
